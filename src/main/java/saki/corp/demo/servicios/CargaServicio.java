@@ -43,4 +43,8 @@ public class CargaServicio {
     public String eliminaSolicitud(long id){
         return (cargaDAO.eliminarSolicitud(id)) ? "Eliminado" : "Error";
     }
+
+    public String editaSolicitud(Solicitud s){
+        return cargaDAO.editarSolicitud(s) ? "Editado con exito" : "Error durate la edición";
+    }
 }

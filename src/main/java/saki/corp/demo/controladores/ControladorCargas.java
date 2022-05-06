@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "api")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT})
 public class ControladorCargas {
 
     @Autowired
@@ -24,7 +24,7 @@ public class ControladorCargas {
         return "Error en la carga";
     }
 
-    @RequestMapping(value = "solicitud", method = RequestMethod.POST)
+    @PostMapping(value = "solicitud")
     public String ingresarSolicitud(@RequestBody Solicitud s){
         return cargaServicio.cargarSolicitud(s);
     }
@@ -34,9 +34,14 @@ public class ControladorCargas {
         return cargaServicio.solicitudes();
     }
 
-    @RequestMapping(value = "solicitud/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "solicitud/{id}")
     public String eliminaSolicitud(@PathVariable long id){
         return cargaServicio.eliminaSolicitud(id);
+    }
+
+    @PutMapping(value = "solicitud")
+    public String editarSolicitud(@RequestBody Solicitud s) {
+        return cargaServicio.editaSolicitud(s);
     }
 
 }

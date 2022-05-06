@@ -12,4 +12,5 @@ public interface CargaDAO {
     public boolean ingresarSolicitud(Solicitud s);
     public List<Solicitud> consultarSolicitudes();
     public boolean eliminarSolicitud(long id_solicitud);
+    public boolean editarSolicitud(Solicitud s);
 }
